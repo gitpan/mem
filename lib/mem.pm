@@ -1,17 +1,18 @@
 #!/usr/bin/perl -w
-use strict;
+#use strict;
 #does nothing if run! 
 
 { package mem;  
-  our $VERSION='0.3.1';
+  our $VERSION='0.3.2';
   # RCS $Revision: 1.4 $ $Date: 2013-03-20 23:26:31-07 $
+	# 0.3.2		- Fix summary to be more descriptive
 	#	0.3.1		- Fix Manifest => MANIFEST
 	#	0.3.0		- Initial external 'non'-release
   sub import { 
     if (@_ == 1) {
       my ($p, $f, $l)=caller;
       $p =~ s!::!/!g;
-      $p.=".pm";
+      $p .= ".pm";
       $::INC{$p} = $f;
     }
   } 
@@ -22,13 +23,11 @@ use strict;
 
 =head1 NAME
 
-
-
-mem       -- use in-"mem"ory version of (calling) module & define immediate
+mem  -  mark in-"mem" package as already loaded for "use"
 
 =head1 VERSION
 
-Version "0.3.1"
+Version "0.3.2"
 
 =head1 SYNOPSIS
 
@@ -53,7 +52,7 @@ of C<use mem>.
     use mem; 
     our (@EXPORT, @ISA);
     use mem(
-    @EXPORT=qw(ARRAY), @ISA=qw(Exporter)
+      @EXPORT=qw(ARRAY), @ISA=qw(Exporter)
     )
     ;
     sub ARRAY (;*) {
