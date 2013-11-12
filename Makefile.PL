@@ -6,9 +6,10 @@ use ExtUtils::MakeMaker;
 WriteMakefile(
     NAME         => 'mem',
     VERSION_FROM => 'lib/mem.pm', # finds \$VERSION
-    AUTHOR       => 'Linda Walsh (perl-diddler@tlinx.org)',
-    ABSTRACT     => "use in-'mem' version of current package",
-    PREREQ_PM    => {
+    AUTHOR       => 'Linda Walsh (LAWALSH@cpan.org)',
+    ABSTRACT     => "allow use of packages already in 'mem'ory",
+    TEST_REQUIRES=> {
                      'Test::Simple' => 0.44,
-                    },
+                   },
+    dist        => { TAR=> 'ptar' },
 );

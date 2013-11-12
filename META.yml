@@ -1,13 +1,14 @@
 ---
-abstract: "use in-'mem' version of current package"
+abstract: "allow use of packages already in 'mem'ory"
 author:
-  - 'Linda Walsh (perl-diddler@tlinx.org)'
+  - 'Linda Walsh (LAWALSH@cpan.org)'
 build_requires:
   ExtUtils::MakeMaker: 0
+  Test::Simple: 0.44
 configure_requires:
   ExtUtils::MakeMaker: 0
 dynamic_config: 1
-generated_by: 'ExtUtils::MakeMaker version 6.6302, CPAN::Meta::Converter version 2.131560'
+generated_by: 'ExtUtils::MakeMaker version 6.82, CPAN::Meta::Converter version 2.132830'
 license: unknown
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -17,6 +18,5 @@ no_index:
   directory:
     - t
     - inc
-requires:
-  Test::Simple: 0.44
-version: v0.3.2
+requires: {}
+version: v0.3.3

@@ -1,10 +1,10 @@
 {
-   "abstract" : "use in-'mem' version of current package",
+   "abstract" : "allow use of packages already in 'mem'ory",
    "author" : [
-      "Linda Walsh (perl-diddler@tlinx.org)"
+      "Linda Walsh (LAWALSH@cpan.org)"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "ExtUtils::MakeMaker version 6.6302, CPAN::Meta::Converter version 2.131560",
+   "generated_by" : "ExtUtils::MakeMaker version 6.82, CPAN::Meta::Converter version 2.132830",
    "license" : [
       "unknown"
    ],
@@ -22,7 +22,8 @@
    "prereqs" : {
       "build" : {
          "requires" : {
-            "ExtUtils::MakeMaker" : "0"
+            "ExtUtils::MakeMaker" : "0",
+            "Test::Simple" : "0.44"
          }
       },
       "configure" : {
@@ -31,11 +32,9 @@
          }
       },
       "runtime" : {
-         "requires" : {
-            "Test::Simple" : "0.44"
-         }
+         "requires" : {}
       }
    },
    "release_status" : "stable",
-   "version" : "v0.3.2"
+   "version" : "v0.3.3"
 }

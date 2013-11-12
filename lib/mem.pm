@@ -1,10 +1,11 @@
 #!/usr/bin/perl -w
-#use strict;
+use strict;
 #does nothing if run! 
 
 { package mem;  
-  our $VERSION='0.3.2';
-  # RCS $Revision: 1.4 $ $Date: 2013-03-20 23:26:31-07 $
+  our $VERSION='0.3.3';
+  # RCS $Revision: 1.5 $ $Date: 2013-11-07 20:51:28-08 $
+	# 0.3.3		- Switch to using ptar for archive creation
 	# 0.3.2		- Fix summary to be more descriptive
 	#	0.3.1		- Fix Manifest => MANIFEST
 	#	0.3.0		- Initial external 'non'-release
@@ -27,7 +28,7 @@ mem  -  mark in-"mem" package as already loaded for "use"
 
 =head1 VERSION
 
-Version "0.3.2"
+Version "0.3.3"
 
 =head1 SYNOPSIS
 
