@@ -11,5 +11,5 @@ WriteMakefile(
     TEST_REQUIRES=> {
                      'Test::Simple' => 0.44,
                    },
-    dist        => { TAR=> 'ptar' },
+    dist        => { TAR=> 'ptar', TARFLAGS=> "-cvf" },
 );
