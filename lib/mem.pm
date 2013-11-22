@@ -1,18 +1,22 @@
 #!/usr/bin/perl -w
 use strict;
 #does nothing if run! 
+#
 
 package mem;  
-  our $VERSION='v0.4.0';
+  our $VERSION=0.4.1;
 	
 	our %os2sep = ( Wi => "\x{5c}", MS => "\x{5c}" );
 
 	sub sep_detect() {
-		my $OS = substr(($ENV{OS} || $^O),0,2); 
-		defined $os2sep{$OS} ? $os2sep{$OS} : '/';
+#		my $OS = substr(($ENV{OS} || $^O),0,2); 
+#		defined $os2sep{$OS} ? $os2sep{$OS} : 
+		'/';
 	}
 
-  # RCS $Revision: 1.5 $ $Date: 2013-11-07 20:51:28-08 $
+  # RCS $Revision: 1.6 $ $Date: 2013-11-21 22:25:57-08 $
+	# 0.4.1		- revert attempt to use win32 BS -- seems to cause
+	# 					more problems than it fixed.
 	# 0.4.0		- Documentation upgrade; 
   #           Attempt to point to win32 paths w/backslash
 	# 0.3.3		- Switch to using ptar for archive creation
@@ -56,7 +60,7 @@ mem  -  use "in-mem" pkgs & force definitions into mem early
 
 =over 
 
-Version "0.4.0"
+Version "0.4.1"
 
 =back
 
