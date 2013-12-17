@@ -4,7 +4,7 @@ use strict;
 #
 
 package mem;  
-  our $VERSION=0.4.1;
+  our $VERSION=0.4.2;
 	
 	our %os2sep = ( Wi => "\x{5c}", MS => "\x{5c}" );
 
@@ -14,7 +14,8 @@ package mem;
 		'/';
 	}
 
-  # RCS $Revision: 1.6 $ $Date: 2013-11-21 22:25:57-08 $
+  # RCS $Revision: 1.7 $ $Date: 2013-12-16 13:21:47-08 $
+	# 0.4.2		- doc change & excisement of  a symlink (maybe winprob)
 	# 0.4.1		- revert attempt to use win32 BS -- seems to cause
 	# 					more problems than it fixed.
 	# 0.4.0		- Documentation upgrade; 
@@ -60,7 +61,7 @@ mem  -  use "in-mem" pkgs & force definitions into mem early
 
 =over 
 
-Version "0.4.1"
+Version "0.4.2"
 
 =back
 
