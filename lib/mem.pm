@@ -4,7 +4,7 @@ use strict;
 #
 
 package mem;  
-  our $VERSION=0.4.2;
+  our $VERSION='0.4.4';
 	
 	our %os2sep = ( Wi => "\x{5c}", MS => "\x{5c}" );
 
@@ -15,6 +15,10 @@ package mem;
 	}
 
   # RCS $Revision: 1.7 $ $Date: 2013-12-16 13:21:47-08 $
+	# 0.4.4		- Add dep on recent ExtMM @ in BUILD_REQ
+	#           Documentation enhancements and clarifications.
+	# 0.4.3		- change format of VERSION to a string (vec unsupported
+	# 					in earlier perl versions)
 	# 0.4.2		- doc change & excisement of  a symlink (maybe winprob)
 	# 0.4.1		- revert attempt to use win32 BS -- seems to cause
 	# 					more problems than it fixed.
@@ -61,7 +65,7 @@ mem  -  use "in-mem" pkgs & force definitions into mem early
 
 =over 
 
-Version "0.4.2"
+Version "0.4.4"
 
 =back
 
@@ -103,6 +107,7 @@ Following, is a sample program, showing two uses of C<mem>.
   package main;
   use Ar_Type;
   use P;
+	use Types::Core
 
   my @a=(1,2,3);
   my ($ed, $light);
@@ -118,9 +123,9 @@ Following, is a sample program, showing two uses of C<mem>.
 
 =over
 
-=item First, the correct output:
+=item 
 
-=back
+First, the correct output:
 
   @a = ref of array
   ref of ed is bee
@@ -129,23 +134,35 @@ Following, is a sample program, showing two uses of C<mem>.
   Does ref $ed eq ARRAY?: no
   #  (Because ref "ed" is really a bless "ed" bee)
 
-=over
 
-=item Second, B<I<without>> the first "C<use mem>", presuming the line was commented out:
+=item 
 
-=back
+Second, B<I<without>> the first "C< use mem >", presuming the line was commented out:
 
   Can't locate Ar_Type.pm in @INC (@INC contains: 
     /usr/lib/perl5/5.16.2 ...   /usr/lib/perl5/site_perl .) 
     at /tmp/ex line 18.
   BEGIN failed--compilation aborted at /tmp/ex line 18.  
 
+This is due to C<package AR_Type>, the package already declared
+and in I<C<mem>ory>>, being I<ignored> by Perl's C<use> statement
+because some I<Perl-specific>, I<"internal flag"> is not set for
+C<package Ar_Type>.  The first C<use mem> causes this flag, normally
+set with the path of the of a C<use>d file, to be set with the
+containing file path and an added comment, containing the line number.
+
+This tells perl to use the definition of the package that is already
+in C<mem>ory.
 
 =over
 
-=item and, Third, instead of dropping the 1st "C<use mem;>", you drop (or comment out) the 2nd usage in the above example, you get:
+I<and>
 
 =back
+
+=item 
+
+Third, instead of dropping the 1st "C< use mem >", you drop (or comment out) the 2nd usage in the above example, you get:
 
   Bareword "ARRAY" not allowed while "strict subs" 
     in use at /tmp/ex line 27.
@@ -157,28 +174,42 @@ Following, is a sample program, showing two uses of C<mem>.
   Execution of /tmp/ex aborted due to compilation errors. 
 
 
-=head1 COMMENTS
+This happens because when C<use Exporter> is called, the 
+contents of C<@EXPORT> is not known.  Even with the assignment
+to C<@EXPORT>, the "C<@EXPORT=qw(ARRAY)>" being right above
+the C<use Exporter> statement.  Similarly to the first error, above,
+Perl doesn't use the value of C<@EXPORT> just above it.  Having
+C< use mem > in the second position forces Perl to put the assignment
+to @EXPORT in C< mem >ory, so that when C< use Exporter > is called, 
+it can pick up the name of C<ARRAY> as already being "exported" and
+B<defined>.  
 
-The first usage allows 'C<main>' to find C<package Ar_Type>, I<already in 
-memory>
-rather than forcing a library search for it.  By default perl doesn't recognize modules already defined in the same file.
-
-The second usage allows the function prototype and definition of 'C<ARRAY>' to
-be exported in time for use in 'C<main>'.  Without it, You could still call
-C<ARRAY>, but would have to use an ambersand or parens after the subroutine name.
-By forcing ISA and EXPORT to be defined before Exporter is called, Exporter can
-export the symbols in time for main AND their prototypes.
-
-
-=head1 Similar or related function(s):
-
-=over
-
-L<me::inlined>  I<(alpha release )>)
+Without C<use mem> putting the value of C<@EXPORT> in C<mem>ory, 
+C<ARRAY> isn't defined, an you get the errors shown above.
 
 =back
 
-=head4 Note: 
+=head2 Summary
+
+The first usage allows 'C<main>' to find C<package Ar_Type>, I<already in 
+C<mem>ory>.
+
+The second usage forces the definition of 'C<ARRAY>' into C<mem>ory so
+they can be exported by an exporter function.
+
+In B<both> cases, C<mem> allows your already-in-C<mem>ory code to 
+be used.  Thsi allows simplified programming and usage without knowledge
+of or references to Perl's internal-flags or internal run phases.
+
+=head1 SEE ALSO
+
+
+See L<Exporter> for information on exporting names.  See the newer, 
+L<Xporter> for doing similar without the need for setting C<@ISA>
+and persistent defaults in C<@EXPORT>. See L<P> for more details about 
+the generic print verb and see L<Types::Core> for a more complete
+treatment of the CORE Types.
+
 
 
 =cut

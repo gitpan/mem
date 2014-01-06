@@ -8,6 +8,7 @@ WriteMakefile(
     VERSION_FROM => 'lib/mem.pm', # finds \$VERSION
     AUTHOR       => 'Linda Walsh (LAWALSH@cpan.org)',
     ABSTRACT     => "allow use of packages already in 'mem'ory",
+    BUILD_REQUIRES=> { 'ExtUtils::MakeMaker' => '6.8.2', },
     TEST_REQUIRES=> {
                      'Test::Simple' => 0.44,
                    },
