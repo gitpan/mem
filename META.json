@@ -4,7 +4,7 @@
       "Linda Walsh (LAWALSH@cpan.org)"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "ExtUtils::MakeMaker version 6.82, CPAN::Meta::Converter version 2.132830",
+   "generated_by" : "ExtUtils::MakeMaker version 6.86, CPAN::Meta::Converter version 2.120351",
    "license" : [
       "unknown"
    ],
@@ -22,7 +22,7 @@
    "prereqs" : {
       "build" : {
          "requires" : {
-            "ExtUtils::MakeMaker" : "v6.8.2",
+            "ExtUtils::MakeMaker" : "6.82",
             "Test::Simple" : "0.44"
          }
       },
@@ -36,5 +36,5 @@
       }
    },
    "release_status" : "stable",
-   "version" : "v0.4.4"
+   "version" : "v0.4.5"
 }

@@ -4,7 +4,7 @@ use strict;
 #
 
 package mem;  
-  our $VERSION='0.4.4';
+  our $VERSION='0.4.5';
 	
 	our %os2sep = ( Wi => "\x{5c}", MS => "\x{5c}" );
 
@@ -15,6 +15,7 @@ package mem;
 	}
 
   # RCS $Revision: 1.7 $ $Date: 2013-12-16 13:21:47-08 $
+	# 0.4.5		- Add alt version format for ExtMM 
 	# 0.4.4		- Add dep on recent ExtMM @ in BUILD_REQ
 	#           Documentation enhancements and clarifications.
 	# 0.4.3		- change format of VERSION to a string (vec unsupported
@@ -65,7 +66,7 @@ mem  -  use "in-mem" pkgs & force definitions into mem early
 
 =over 
 
-Version "0.4.4"
+Version "0.4.5"
 
 =back
 
